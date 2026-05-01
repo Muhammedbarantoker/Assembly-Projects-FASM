@@ -6,23 +6,23 @@ entry $
 
 
     mov rax, 2001
-    mov rdi, sonuc_tamponu + 19
+    mov rdi, buffer + 19
     mov rbx, 10
 
 
-dongu:
+convert_loop:
     xor rdx, rdx
     div rbx
     add dl, 48
     mov [rdi], dl
     dec rdi
     test rax, rax
-    jnz dongu
+    jnz convert_loop
 
 
     mov rax, 1
     mov rdi, 1
-    mov rsi, sonuc_tamponu
+    mov rsi, buffer
     mov rdx, 21
     syscall
 
@@ -33,4 +33,4 @@ dongu:
 
 
 segment readable writeable
-    sonuc_tamponu db 20 dup(32), 10
+    buffer db 20 dup(32), 10
