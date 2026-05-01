@@ -6,26 +6,26 @@ entry $
 
 
     mov rdx, 16
-    mov rsi, girdi
+    mov rsi, input
     mov rdi, 0
     mov rax, 0
     syscall
 
 
     xor rax, rax
-    mov rsi, girdi
+    mov rsi, input
 
 
-cevir:
+convert:
     movzx rdx, byte [rsi]
     cmp rdx, 10
-    je bitti
+    je done
     sub rdx, 48
     imul rax, 10
     add rax, rdx
     inc rsi
-    jmp cevir
-bitti:
+    jmp convert
+done:
 
 
     mov rdi, 0
@@ -34,4 +34,4 @@ bitti:
 
 
 segment readable writeable
-    girdi rb 16
+    input rb 16
