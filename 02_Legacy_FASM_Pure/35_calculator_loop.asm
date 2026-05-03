@@ -1,0 +1,149 @@
+format ELF64 executable 3
+
+
+segment readable executable
+entry $
+
+
+main_loop:
+    mov rax, 0
+    mov rdi, 0
+    mov rsi, input_op
+    mov rdx, 2
+    syscall
+
+
+    mov al, byte [input_op]
+    cmp al, 48
+    je exit_program
+
+
+    mov rax, 0
+    mov rdi, 0
+    mov rsi, input_buffer1
+    mov rdx, 10
+    syscall
+
+
+    mov rsi, input_buffer1
+    call atoi
+    mov r12, rax
+
+
+    mov rax, 0
+    mov rdi, 0
+    mov rsi, input_buffer2
+    mov rdx, 10
+    syscall
+
+
+    mov rsi, input_buffer2
+    call atoi
+    mov r13, rax
+
+
+    mov al, byte [input_op]
+    cmp al, 49
+    je do_add
+    cmp al, 50
+    je do_sub
+    cmp al, 51
+    je do_mul
+    cmp al, 52
+    je do_div
+    
+
+    jmp main_loop
+
+
+do_add:
+    mov rax, r12
+    add rax, r13
+    jmp print_result
+
+
+do_sub:
+    mov rax, r12
+    sub rax, r13
+    jmp print_result
+
+
+do_mul:
+    mov rax, r12
+    imul rax, r13
+    jmp print_result
+
+
+do_div:
+    mov rax, r12
+    xor rdx, rdx
+    div r13
+    jmp print_result
+
+
+print_result:
+    call itoa
+
+
+    mov rdx, rcx
+    mov rax, 1
+    mov rdi, 1
+    syscall
+
+
+    mov rax, 1
+    mov rdi, 1
+    mov rsi, newline_char
+    mov rdx, 1
+    syscall
+
+
+    jmp main_loop
+
+
+exit_program:
+    mov rax, 60
+    xor rdi, rdi
+    syscall
+
+
+atoi:
+    xor rax, rax
+.parse_loop:
+    movzx rdx, byte [rsi]
+    cmp dl, 10
+    je .end_parse
+    sub dl, 48
+    imul rax, 10
+    add rax, rdx
+    inc rsi
+    jmp .parse_loop
+.end_parse:
+    ret
+
+
+itoa:
+    mov rdi, print_buffer
+    add rdi, 19
+    mov rcx, 0
+    mov r8, 10
+.convert_loop:
+    xor rdx, rdx
+    div r8
+    add dl, 48
+    mov [rdi], dl
+    dec rdi
+    inc rcx
+    test rax, rax
+    jnz .convert_loop
+    inc rdi
+    mov rsi, rdi
+    ret
+
+
+segment readable writeable
+    input_op db 2 dup(0)
+    input_buffer1 db 10 dup(0)
+    input_buffer2 db 10 dup(0)
+    print_buffer db 20 dup(0)
+    newline_char db 10
