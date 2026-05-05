@@ -80,18 +80,21 @@ main_loop:
 do_add:
     mov rax, r12
     add rax, r13
+    mov r15, rax
     jmp print_result
 
 
 do_sub:
     mov rax, r12
     sub rax, r13
+    mov r15, rax
     jmp print_result
 
 
 do_mul:
     mov rax, r12
     imul rax, r13
+    mov r15, rax
     jmp print_result
 
 
@@ -99,6 +102,7 @@ do_div:
     mov rax, r12
     xor rdx, rdx
     div r13
+    mov r15, rax
     jmp print_result
 
 
@@ -108,7 +112,8 @@ print_result:
     mov rsi, msg_result
     mov rdx, len_result
     syscall
-
+	
+	mov rax, r15
 
     call itoa
 
