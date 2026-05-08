@@ -99,6 +99,8 @@ do_mul:
 
 
 do_div:
+	test r13, r13
+	jz print_div_error
     mov rax, r12
     xor rdx, rdx
     div r13
@@ -129,7 +131,15 @@ print_result:
     mov rsi, newline_char
     mov rdx, 1
     syscall
-
+	
+	
+print_div_error:
+	mov rax, 1
+	mov rdi, 1
+	mov rsi, msg_div_error
+	mov rdx, len_div_error
+	syscall
+	
 
     jmp main_loop
 
@@ -183,7 +193,9 @@ segment readable writeable
     len_num2 = $ - msg_num2
     msg_result db 'Result: ', 0
     len_result = $ - msg_result
-
+	msg_div_error db 'Error: Division by zero!', 10, 0
+	len_div_error = $ - msg_div_error
+	
 
     input_op db 2 dup(0)
     input_buffer1 db 10 dup(0)
