@@ -41,6 +41,14 @@ close_cpuinfo:
     syscall
 
 
+newline:
+    mov rax, 1
+    mov rdi, 1
+    mov rsi, newline_char
+    mov rdx, 1
+    syscall
+
+
 exit_program:
     mov rax, 60
     xor rdi, rdi
@@ -49,4 +57,5 @@ exit_program:
 
 segment readable writeable
     cpuinfo_path db '/proc/cpuinfo', 0
+    newline_char db 10
     info_buffer db 512 dup(0)
