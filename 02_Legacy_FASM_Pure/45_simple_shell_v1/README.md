@@ -23,10 +23,15 @@ A lightweight, native command-line interpreter (Shell) built completely from scr
 🚀 How to Run
 
 1. Assemble
+'''
 fasm 45_simple_shell_v1.asm
+'''
 2. Set Permissions
+'''
 chmod +x 45_simple_shell_v1
+'''
 3. Run
+'''
 ./45_simple_shell_v1
-
+'''
 Baran was here. Building a custom terminal workspace from the ground up.

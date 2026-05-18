@@ -19,13 +19,17 @@ A dynamic **x86_64 Assembly** program that facilitates user interaction via stan
 ## 🚀 How to Run
 
 ### 1. Assemble
-
+'''
 fasm 41_user_input.asm
-
-### 2. Run
-
+'''
+### 2. Permission
+'''
+chmod +x 41_user_input
+'''
+### 3. Run
+'''
 ./41_user_input
-
+'''
 ---
 
 *Baran was here. Making Assembly talk back.*

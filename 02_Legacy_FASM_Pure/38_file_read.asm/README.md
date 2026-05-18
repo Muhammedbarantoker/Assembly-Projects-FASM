@@ -23,7 +23,14 @@ Open your terminal in the project folder and run:
 
 ```bash
 # Compile the .asm file into an executable
-fasm file_read.asm
-
+'''
+fasm 38_file_read.asm
+'''
+# Permission
+'''
+chmod +x 38_file_read
+'''
 # Run the program
-./file_read
+'''
+./38_file_read
+'''

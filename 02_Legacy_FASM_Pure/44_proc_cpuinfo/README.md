@@ -19,17 +19,17 @@ A low-level system utility in x86_64 Assembly that interfaces directly with the 
 ## 🚀 How to Run
 
 ### 1. Assemble
-
+'''
 fasm 44_proc_cpuinfo.asm
-
+'''
 ### 2. Set Permissions
-
+'''
 chmod +x 44_proc_cpuinfo
-
+'''
 ### 3. Run
-
+'''
 ./44_proc_cpuinfo
-
+'''
 ---
 
 *Baran was here. Extracting raw hardware details.*

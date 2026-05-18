@@ -19,17 +19,21 @@ An advanced system-level program that demonstrates how to interact with the Linu
 ## 🚀 How to Run
 
 ### 1. Create a Test File
-
+'''
 echo "Hello Assembly" > test.txt
-
+'''
 ### 2. Assemble
-
+'''
 fasm 42_file_reader.asm
-
-### 3. Run
-
+'''
+### 3. Permission
+'''
+chmod +x 42_file_reader
+'''
+### 4. Run
+'''
 ./42_file_reader
-
+'''
 ---
 
 *Baran was here. Reading the system, one byte at a time.*

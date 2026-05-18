@@ -24,17 +24,17 @@ An advanced x86_64 Assembly utility that allows users to specify which file to r
 ## 🚀 How to Run
 
 ### 1. Assemble
-
+'''
 fasm 43_interactive_reader.asm
-
+'''
 ### 2. Set Permissions
-
+'''
 chmod +x 43_interactive_reader
-
+'''
 ### 3. Run
-
+'''
 ./43_interactive_reader
-
+'''
 ---
 
 *Baran was here. Making Assembly interactive and clean.*

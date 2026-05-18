@@ -22,10 +22,18 @@ You need the **Flat Assembler (FASM)** installed on your Linux system.
 ### 2. Compile and Execute
 ```bash
 # Assemble the source
+'''
 fasm 39_system_logger.asm
-
+'''
+# Permission
+'''
+chmod +x 39_system_logger
+'''
 # Run the program
+'''
 ./39_system_logger
-
+'''
 # Check the generated log
+'''
 cat system_time.log
+'''

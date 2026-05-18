@@ -18,4 +18,16 @@ A sophisticated **x86_64 Assembly** utility that audits the local system. It ext
 
 ### 1. Compile
 ```bash
+'''
 fasm 40_system_spy.asm
+'''
+### 2. Permission
+   bash
+'''
+chmod +x 40_system_spy
+'''
+### 3. Run
+   bash
+'''
+./40_system_spy
+'''

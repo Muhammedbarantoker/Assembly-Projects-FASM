@@ -12,7 +12,7 @@ shell_loop:
     mov rdx, prompt_len
     syscall
 
-input_start:
+.input_start:
     mov rax, 0
     mov rdi, 0
     mov rsi, input_buffer
