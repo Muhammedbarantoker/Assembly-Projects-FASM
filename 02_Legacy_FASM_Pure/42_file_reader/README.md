@@ -12,11 +12,23 @@ An advanced system-level program that demonstrates how to interact with the Linu
  * **Resource Cleanup:** Ensures system stability by explicitly closing open files before termination.
 ## How to Run
  1. Create a Test File:
-   echo "Hello Assembly" > test.txt
+```bash
+echo "Hello Assembly" > test.txt
+
+```
  2. Assemble:
-   fasm 42_file_reader.asm
+```bash
+fasm 42_file_reader.asm
+
+```
  3. Permission:
-   chmod +x 42_file_reader
+```bash
+chmod +x 42_file_reader
+
+```
  4. Run:
-   ./42_file_reader
+```bash
+./42_file_reader
+
+```
 *Baran was here. Reading the system, one byte at a time.*
