@@ -6,6 +6,9 @@ entry $
 
 
 main_loop:
+    call clear_buffers
+
+
     mov rax, 1
     mov rdi, 1
     mov rsi, msg_menu
@@ -114,10 +117,15 @@ print_result:
     mov rsi, msg_result
     mov rdx, len_result
     syscall
-	
+
+
 	mov rax, r15
 
+
     call itoa
+
+
+    mov rsi, rdi
 
 
     mov rdx, rcx
@@ -126,11 +134,15 @@ print_result:
     syscall
 
 
+newline:
     mov rax, 1
     mov rdi, 1
     mov rsi, newline_char
     mov rdx, 1
     syscall
+
+
+    jmp main_loop
 	
 	
 print_div_error:
@@ -181,6 +193,27 @@ itoa:
     jnz .convert_loop
     inc rdi
     mov rsi, rdi
+    ret
+
+
+clear_buffers:
+    cld
+    mov rdi, input_buffer1
+    mov rcx, 10
+    xor al, al
+    rep stosb
+
+
+    mov rdi, input_buffer2
+    mov rcx, 10
+    xor al, al
+    rep stosb
+
+
+    mov rdi, print_buffer
+    mov rcx, 20
+    xor al, al
+    rep stosb
     ret
 
 
